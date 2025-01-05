@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="getInfo.js"></script>
+    <title>Weather app</title>
+</head>
+<body>
+
+
+    <div class="cityFinder">
+        <input id="latitude" type="text" placeholder="Enter latitude">
+        <input id="longitude" type="text" placeholder="Enter longitude">
+        <button onclick="submitCoords()">Enter Coords</button>
+    </div>
+
+
+    <div id="firstPanel">
+
+        <div>
+            <h1 id="tempBox"></h1>
+        </div>
+
+        <div>
+            <h1 id="infoBox"></h1>
+        </div>
+
+        <div id="imgBox">
+            <img id="picBox" src="" alt="">
+        </div>
+
+    </div>
+
+
+    <div id="foreCast">
+
+    </div>
+
+
+    <script>
+        window.onload = function() 
+        {
+            getLocation();
+        }
+    </script>
+</body>
+</html>
