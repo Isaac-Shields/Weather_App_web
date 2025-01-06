@@ -84,6 +84,8 @@ async function getWeather(lat, long)
         }
         const data = await response.json();
 
+        document.getElementById('foreCast').innerHTML = "";
+
         for(i = 0; i < 24; i++)
         {
             time = data.hourly.time[i];
@@ -124,7 +126,7 @@ function updateIcons(day, clouds, rain, snow, pic, info)
             pic.src = "assets/512/day_partial_cloud.png";
             info.textContent = "Day, Partly cloudy"
         }
-        else if(clouds > 70 && clouds < 90)
+        else if(clouds > 70 && clouds <= 90)
         {
             //cloudy
             const imgPath = 'assets/512/cloudy.png';
@@ -161,7 +163,7 @@ function updateIcons(day, clouds, rain, snow, pic, info)
             pic.src = "assets/512/night_full_moon_clear.png";
             info.textContent = "Night, Clear"
         }
-        else if(clouds > 30 && clouds < 70)
+        else if(clouds > 30 && clouds <= 70)
         {
             //Partly cloudy
             pic.src = "assets/512/night_full_moon_partial_cloud.png";
@@ -201,12 +203,12 @@ function fullDayForecast(temp, day, time, clouds, rain, snow)
     hourBox.textContent = hours + ":00";
 
     const temperatureBox = document.createElement('div');
-    temperatureBox.textContent = temp + "°F";
+    temperatureBox.textContent = temp.toPrecision(4) + "°F";
 
     const miniImg = document.createElement('div');
     const img = document.createElement('img');
-    const altText = img.alt;
-    updateIcons(day, clouds, rain, snow, img, altText);
+
+    updateIcons(day, clouds, rain, snow, img, img);
     miniImg.appendChild(img);
 
     miniBox.appendChild(hourBox);
